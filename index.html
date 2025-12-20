@@ -1,19 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>pomodoro timer</title>
     <link rel="stylesheet" href="./style.css">
     <script src="./main.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+        integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
+
 <body>
     <div class="container">
         <h2>pomodoro</h2>
         <div class="info-tabs">
-            <div class="work-tab">pomodoro</div>
+            <div class="work-tab">work</div>
             <div class="break-tab">break</div>
+
         </div>
         <div class="timer-container">
             <h1 class="timer">17:45</h1>
@@ -23,5 +28,35 @@
             <i class="fa-solid fa-gear"></i>
         </div>
     </div>
+
+    <!-- setting modal -->
+    <dialog id="myDialog">
+        <div>
+            <h2>Modal Title</h2>
+            <div class="close-modal">
+                <i class="fa-solid fa-xmark"></i>
+            </div>
+        </div>
+        <div>
+            <h4>time (minutes) </h4>
+            <div class="time-inputs">
+                <div>
+                    <label for="work">work</label>
+                    <input type="number" id="work" min="10" max="50" step="5">
+                </div>
+                <div>
+                    <label for="break">break</label>
+                    <input type="number" id="break" min="5" max="30" step="5">
+                </div>
+                <div>
+                    <label for="session">session</label>
+                    <input type="number" id="session" min="2" max="8">
+                </div>
+            </div>
+        </div>
+
+        <button class="apply">apply</button>
+    </dialog>
 </body>
+
 </html>
