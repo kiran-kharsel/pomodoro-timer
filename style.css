@@ -121,3 +121,61 @@ body{
     transform: rotate(30deg);
     transform-origin: center;
 }
+
+
+/* setting modal */
+
+.setting-modal[open]{
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background-color: var(--text-light);
+    width: 400px;
+    height: 350px;
+    /* display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px; */
+}
+
+.setting-modal .heading{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px;
+    border-bottom: 1px solid black;
+}
+
+.setting-modal .times{
+    background-color: green;
+    padding: 20px 10px;
+}
+
+.times h5{
+    text-transform: uppercase;
+    margin-bottom: 15px;
+}
+
+.times .time-inputs{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.time-inputs div{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.time-inputs div label{
+    font-size: 14px;
+}
+
+.time-inputs div input{
+    font-size: 14px;
+    width: 80px;
+}
