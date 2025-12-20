@@ -1,0 +1,109 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root{
+    --dark-background: #222831;
+    --light-background: #393e46;
+    --accent-color: #f96d00;
+    --text-light: #f2f2f2;
+    --text-dark: #222831;
+
+}
+
+body{
+    height: 100vh;
+    width: 100vw;
+    background-color: var(--light-background);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.container{
+    width: 500px;
+    height: 70vh;
+    /* background-color: green; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.container h2{
+    color: var(--text-light);
+}
+
+.container .info-tabs{
+    background-color: var(--dark-background);
+    width: 300px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 5px;
+    border-radius: 50px;
+}
+
+.info-tabs div{
+    background-color: var(--accent-color);
+    height: 100%;
+    width: 120px;
+    border-radius: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text-light);
+}
+
+.container .timer-container{
+    background-color: var(--dark-background);
+    height: 350px;
+    width: 350px;
+    border: 10px solid var(--accent-color);
+    border-radius: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+}
+
+.timer-container h1{
+    font-size: 100px;
+    color: var(--text-light);
+}
+
+.timer-container button{
+    height: 40px;
+    width: 150px;
+    border: 1px solid var(--dark-background);
+    border-radius: 20px;
+    outline: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-left: 15px;
+    background: transparent;
+    color: var(--text-light);
+    font-size: 18px;
+    letter-spacing: 15px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: 0.4s;
+}
+
+.timer-container button:hover{
+    border: 1px solid var(--accent-color);
+}
+
+.container .settings{
+    color: var(--text-light);
+    font-size: 20px;
+    cursor: pointer;
+}
