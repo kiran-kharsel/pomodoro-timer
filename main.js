@@ -1,35 +1,33 @@
-// modal
-const modal = document.querySelector(".setting-modal");
-console.log(modal);
 
-// modal.showModal();
 
 // get dom elements
 const timerElem = document.querySelector(".timer");
 const startBtn = document.querySelector(".action");
 const infoElem = document.querySelector(".info-tabs");
+
+const modal = document.querySelector(".setting-modal");
 const settingsBtn = document.querySelector(".settings");
+const workInput = document.querySelector('#work')
+const breakInput = document.querySelector('#break')
+const sessionInput = document.querySelector('#session')
+const applyBtn = modal.querySelector('.apply')
+const closeModalBtn = modal.querySelector('.close-modal')
 
 // default values
-// let defaultWorkTime = 0.3;
-// let defaultBreakTime = 0.25;
-let defaultSession = 2;
+let session = Number(sessionInput.value);
 let sessionCounter = 0;
 
-// convert min into sec
-// let workTimeInSec = defaultWorkTime * 60;
-// let breakTimeInSec = defaultBreakTime * 60;
 
 //interval
 let workInterval;
 let breakInterval;
 
 function loadTimer() {
-  timerElem.innerHTML = `${defaultWorkTime}:00`;
+  timerElem.innerHTML = `${workInput.value}:00`;
   infoElem.querySelector(".work-tab").classList.add("active");
 }
 
-// loadTimer();
+loadTimer();
 
 startBtn.addEventListener("click", function () {
     workTimer();
@@ -37,11 +35,11 @@ startBtn.addEventListener("click", function () {
 
 // function for worktimer
 function workTimer() {
-    let defaultWorkTime = 0.3;
-    let workTimeInSec = defaultWorkTime * 60;
+    let workTime = Number(workInput.value);
+    let workTimeInSec = workTime * 60;
 
   workInterval = setInterval(() => {
-    
+    workTimeInSec--;
     //format time
     const mins = Math.floor(workTimeInSec / 60);
     const secs = workTimeInSec % 60;
@@ -52,7 +50,7 @@ function workTimer() {
     // active work tab
     infoElem.querySelector(".work-tab").classList.add("active");
 
-    workTimeInSec--;
+    //workTimeInSec--;
 
 
     if (workTimeInSec < 0) {
@@ -73,8 +71,8 @@ function workTimer() {
 // breaktimer
 function breakTimer() {
 
-    let defaultBreakTime = 0.25;
-    let breakTimeInSec = defaultBreakTime * 60;
+    let breakTime = Number(breakInput.value);
+    let breakTimeInSec = breakTime * 60;
 
   breakInterval = setInterval(() => {
 
@@ -99,7 +97,7 @@ function breakTimer() {
       sessionCounter++;
 
       // cheak for session, if it match with default
-      if (sessionCounter === defaultSession) {
+      if (sessionCounter === session) {
         console.log("time over, u completed 2 cycle");
         clearInterval(breakInterval);
         clearInterval(workInterval)
@@ -113,3 +111,9 @@ function breakTimer() {
   }, 1000);
 }
 
+
+
+// open settng modal
+settingsBtn.addEventListener('click', function(){
+    modal.showModal();
+})
