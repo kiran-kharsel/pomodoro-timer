@@ -117,3 +117,8 @@ function breakTimer() {
 settingsBtn.addEventListener('click', function(){
     modal.showModal();
 })
+
+//close modal 
+closeModalBtn.addEventListener('click', function(){
+    modal.close()
+})
