@@ -102,8 +102,22 @@ body{
     border: 1px solid var(--accent-color);
 }
 
+
 .container .settings{
+    padding: 10px;
+}
+
+
+.container .settings i{
     color: var(--text-light);
-    font-size: 20px;
+    font-size: 24px;
     cursor: pointer;
+    transition: 0.5s;
+    
+}
+
+.settings i:hover{
+    display: inline-block;
+    transform: rotate(30deg);
+    transform-origin: center;
 }
