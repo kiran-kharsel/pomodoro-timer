@@ -1,5 +1,3 @@
-
-
 // get dom elements
 const timerElem = document.querySelector(".timer");
 const startBtn = document.querySelector(".action");
@@ -7,16 +5,19 @@ const infoElem = document.querySelector(".info-tabs");
 
 const modal = document.querySelector(".setting-modal");
 const settingsBtn = document.querySelector(".settings");
-const workInput = document.querySelector('#work')
-const breakInput = document.querySelector('#break')
-const sessionInput = document.querySelector('#session')
-const applyBtn = modal.querySelector('.apply')
-const closeModalBtn = modal.querySelector('.close-modal')
+const workInput = document.querySelector("#work");
+const breakInput = document.querySelector("#break");
+const sessionInput = document.querySelector("#session");
+const applyBtn = modal.querySelector(".apply");
+const closeModalBtn = modal.querySelector(".close-modal");
 
 // default values
 let session = Number(sessionInput.value);
 let sessionCounter = 0;
 
+// get input values
+let workTime;
+let breakTime;
 
 //interval
 let workInterval;
@@ -30,13 +31,13 @@ function loadTimer() {
 loadTimer();
 
 startBtn.addEventListener("click", function () {
-    workTimer();
+  workTimer();
 });
 
 // function for worktimer
 function workTimer() {
-    let workTime = Number(workInput.value);
-    let workTimeInSec = workTime * 60;
+  workTime = Number(workInput.value);
+  let workTimeInSec = workTime * 60;
 
   workInterval = setInterval(() => {
     workTimeInSec--;
@@ -45,16 +46,14 @@ function workTimer() {
     const secs = workTimeInSec % 60;
 
     // display
-    timerElem.innerHTML = `${String(mins).padStart(2, "0")}:${String(secs)}`
+    timerElem.innerHTML = `${String(mins).padStart(2, "0")}:${String(secs)}`;
 
     // active work tab
     infoElem.querySelector(".work-tab").classList.add("active");
 
     //workTimeInSec--;
 
-
     if (workTimeInSec < 0) {
-
       // clear interval
       clearInterval(workInterval);
 
@@ -67,26 +66,23 @@ function workTimer() {
   }, 1000);
 }
 
-
 // breaktimer
 function breakTimer() {
-
-    let breakTime = Number(breakInput.value);
-    let breakTimeInSec = breakTime * 60;
+  breakTime = Number(breakInput.value);
+  let breakTimeInSec = breakTime * 60;
 
   breakInterval = setInterval(() => {
-
-    //format time 
+    //format time
     const mins = Math.floor(breakTimeInSec / 60);
     const secs = breakTimeInSec % 60;
 
     // display
     console.log(`${String(mins).padStart(2, "0")}:${String(secs)}`);
-    timerElem.innerHTML = `${String(mins).padStart(2, "0")}:${String(secs)}`
+    timerElem.innerHTML = `${String(mins).padStart(2, "0")}:${String(secs)}`;
 
     // active break tab
     infoElem.querySelector(".break-tab").classList.add("active");
-    
+
     breakTimeInSec--;
 
     if (breakTimeInSec < 0) {
@@ -100,7 +96,7 @@ function breakTimer() {
       if (sessionCounter === session) {
         console.log("time over, u completed 2 cycle");
         clearInterval(breakInterval);
-        clearInterval(workInterval)
+        clearInterval(workInterval);
       } else {
         //reset break tab
         infoElem.querySelector(".break-tab").classList.remove("active");
@@ -111,14 +107,21 @@ function breakTimer() {
   }, 1000);
 }
 
+// open setting modal
+settingsBtn.addEventListener("click", function () {
+  modal.showModal();
+});
 
+//close modal
+closeModalBtn.addEventListener("click", function () {
+  modal.close();
+});
 
-// open settng modal
-settingsBtn.addEventListener('click', function(){
-    modal.showModal();
-})
-
-//close modal 
-closeModalBtn.addEventListener('click', function(){
-    modal.close()
-})
+// set new values in modal
+applyBtn.addEventListener("click", function () {
+  workTime = Number(workInput.value);
+  breakTime = Number(breakInput.value)
+  console.log(workTime, breakTime);
+  loadTimer();
+  modal.close();
+});
