@@ -1,7 +1,7 @@
 // get dom elements
 const timerElem = document.querySelector(".timer");
 const startBtn = document.querySelector(".action");
-const infoElem = document.querySelector(".info-tabs");
+const buttonsElem = document.querySelector(".buttons");
 
 const modal = document.querySelector(".setting-modal");
 const settingsBtn = document.querySelector(".settings");
@@ -25,7 +25,7 @@ let breakInterval;
 
 function loadTimer() {
   timerElem.innerHTML = `${workInput.value}:00`;
-  infoElem.querySelector(".work-tab").classList.add("active");
+  buttonsElem.querySelector(".work-tab").classList.add("active");
 }
 
 loadTimer();

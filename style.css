@@ -67,7 +67,7 @@ body{
     background-color: var(--accent-color);
 }
 
-.active{
+.buttons button.active{
     background-color: var(--accent-color);
 }
 
