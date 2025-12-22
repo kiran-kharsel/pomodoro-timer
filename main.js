@@ -121,7 +121,6 @@ closeModalBtn.addEventListener("click", function () {
 applyBtn.addEventListener("click", function () {
   workTime = Number(workInput.value);
   breakTime = Number(breakInput.value)
-  console.log(workTime, breakTime);
   loadTimer();
   modal.close();
 });
