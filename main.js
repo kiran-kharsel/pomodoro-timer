@@ -30,6 +30,31 @@ function loadTimer() {
 
 loadTimer();
 
+
+
+// buttons
+buttonsElem.querySelectorAll('button').forEach((button) => {
+  button.addEventListener('click', function(e){
+    console.log(e.target.className)
+    // remove all values
+    buttonsElem.querySelector(".active").classList.remove("active");
+    timerElem.innerHTML = `00:00`;
+
+    if(e.target.className === 'work-tab'){
+      timerElem.innerHTML = `${workInput.value}:00`;
+      e.target.classList.add('active')
+    }
+    if(e.target.className === 'break-tab'){
+      timerElem.innerHTML = `${breakInput.value}:00`;
+      e.target.classList.add('active')
+    }
+    //add active class
+    // loadtimer fn
+  })
+})
+
+
+
 startBtn.addEventListener("click", function () {
   workTimer();
 });
