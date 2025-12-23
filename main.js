@@ -35,10 +35,9 @@ loadTimer();
 // buttons
 buttonsElem.querySelectorAll('button').forEach((button) => {
   button.addEventListener('click', function(e){
-    console.log(e.target.className)
-    // remove all values
+    // remove all previous values
     buttonsElem.querySelector(".active").classList.remove("active");
-    timerElem.innerHTML = `00:00`;
+    timerElem.innerHTML = ``;
 
     if(e.target.className === 'work-tab'){
       timerElem.innerHTML = `${workInput.value}:00`;
@@ -48,15 +47,26 @@ buttonsElem.querySelectorAll('button').forEach((button) => {
       timerElem.innerHTML = `${breakInput.value}:00`;
       e.target.classList.add('active')
     }
-    //add active class
-    // loadtimer fn
   })
 })
 
 
 
 startBtn.addEventListener("click", function () {
-  workTimer();
+  // check which tab is selected then add timer according to it
+  buttonsElem.querySelectorAll('button').forEach((button) => {
+    console.log(button.className)
+    if(button.className === 'work-tab active'){
+      console.log(button)
+      workTimer();
+    }
+
+    if(button.className === 'break-tab active'){
+      console.log(button)
+      breakTimer();
+    }
+  })
+  
 });
 
 // function for worktimer
@@ -74,7 +84,7 @@ function workTimer() {
     timerElem.innerHTML = `${String(mins).padStart(2, "0")}:${String(secs)}`;
 
     // active work tab
-    infoElem.querySelector(".work-tab").classList.add("active");
+    // buttonsElem.querySelector(".work-tab").classList.add("active");
 
     //workTimeInSec--;
 
@@ -83,10 +93,10 @@ function workTimer() {
       clearInterval(workInterval);
 
       // remove active work tab
-      infoElem.querySelector(".work-tab").classList.remove("active");
+      // infoElem.querySelector(".work-tab").classList.remove("active");
 
       //show break timer
-      breakTimer();
+      //breakTimer();
     }
   }, 1000);
 }
@@ -97,6 +107,7 @@ function breakTimer() {
   let breakTimeInSec = breakTime * 60;
 
   breakInterval = setInterval(() => {
+    breakTimeInSec--;
     //format time
     const mins = Math.floor(breakTimeInSec / 60);
     const secs = breakTimeInSec % 60;
@@ -106,9 +117,8 @@ function breakTimer() {
     timerElem.innerHTML = `${String(mins).padStart(2, "0")}:${String(secs)}`;
 
     // active break tab
-    infoElem.querySelector(".break-tab").classList.add("active");
+    // infoElem.querySelector(".break-tab").classList.add("active");
 
-    breakTimeInSec--;
 
     if (breakTimeInSec < 0) {
       // clear interval
@@ -124,9 +134,9 @@ function breakTimer() {
         clearInterval(workInterval);
       } else {
         //reset break tab
-        infoElem.querySelector(".break-tab").classList.remove("active");
+        //infoElem.querySelector(".break-tab").classList.remove("active");
         // again start work timer
-        workTimer();
+        //workTimer();
       }
     }
   }, 1000);
