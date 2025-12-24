@@ -15,7 +15,7 @@ const closeModalBtn = modal.querySelector(".close-modal");
 
 
 
-function showTimer(activeBtn = null) {
+function showTimer(activeBtn = workButton) {
 
   if(activeBtn.classList.contains('work-tab')){
     timerElem.innerHTML = `${workInput.value}:00`;
@@ -29,12 +29,18 @@ function showTimer(activeBtn = null) {
 
 showTimer(workButton);
 
+
+// function resetShowTimer
+function resetShowTimer(){
+  buttonsElem.querySelector(".active").classList.remove("active");
+  timerElem.innerHTML = ``;
+}
+
 // select work or break timer
 buttonsElem.querySelectorAll("button").forEach((button) => {
   button.addEventListener("click", function (e) {
     // remove all previous values
-    buttonsElem.querySelector(".active").classList.remove("active");
-    timerElem.innerHTML = ``;
+    resetShowTimer()
 
     if (e.target.className === "work-tab") {
       showTimer(e.target);
@@ -98,9 +104,10 @@ closeModalBtn.addEventListener("click", function () {
 
 // set new values in modal
 applyBtn.addEventListener("click", function () {
-  workTime = Number(workInput.value);
-  breakTime = Number(breakInput.value);
-  showTimer(workButton);
+  // workTime = Number(workInput.value);
+  // breakTime = Number(breakInput.value);
+  resetShowTimer()
+  showTimer();
   modal.close();
 });
 
