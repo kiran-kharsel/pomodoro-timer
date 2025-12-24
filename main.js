@@ -2,6 +2,7 @@
 const timerElem = document.querySelector(".timer");
 const startBtn = document.querySelector(".action");
 const buttonsElem = document.querySelector(".buttons");
+const workButton = buttonsElem.querySelector('.work-tab')
 
 const modal = document.querySelector(".setting-modal");
 const settingsBtn = document.querySelector(".settings");
@@ -14,12 +15,12 @@ const closeModalBtn = modal.querySelector(".close-modal");
 
 
 
-function loadTimer() {
+function showTimer(activeElem) {
   timerElem.innerHTML = `${workInput.value}:00`;
-  buttonsElem.querySelector(".work-tab").classList.add("active");
+  activeElem.classList.add("active");
 }
 
-loadTimer();
+showTimer(workButton);
 
 // select work or break timer
 buttonsElem.querySelectorAll("button").forEach((button) => {
@@ -29,12 +30,10 @@ buttonsElem.querySelectorAll("button").forEach((button) => {
     timerElem.innerHTML = ``;
 
     if (e.target.className === "work-tab") {
-      timerElem.innerHTML = `${workInput.value}:00`;
-      e.target.classList.add("active");
+      showTimer(e.target);
     }
     if (e.target.className === "break-tab") {
-      timerElem.innerHTML = `${breakInput.value}:00`;
-      e.target.classList.add("active");
+      showTimer(e.target);
     }
   });
 });

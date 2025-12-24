@@ -185,8 +185,8 @@ body{
 .times .time-inputs{
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    /* border-bottom: 1px solid black; */
+    gap: 30px;
+    /* justify-content: space-between; */
 }
 
 .time-inputs div{
@@ -201,7 +201,7 @@ body{
 
 .time-inputs div input{
     font-size: 14px;
-    width: 80px;
+    width: 150px;
     height: 30px;
     outline: 0;
     border: 0;
