@@ -15,8 +15,15 @@ const closeModalBtn = modal.querySelector(".close-modal");
 
 
 
-function showTimer(activeBtn) {
-  timerElem.innerHTML = `${workInput.value}:00`;
+function showTimer(activeBtn = null) {
+
+  if(activeBtn.classList.contains('work-tab')){
+    timerElem.innerHTML = `${workInput.value}:00`;
+  }
+
+  if(activeBtn.classList.contains('break-tab')){
+    timerElem.innerHTML = `${breakInput.value}:00`;
+  }
   activeBtn.classList.add("active");
 }
 
@@ -93,7 +100,7 @@ closeModalBtn.addEventListener("click", function () {
 applyBtn.addEventListener("click", function () {
   workTime = Number(workInput.value);
   breakTime = Number(breakInput.value);
-  loadTimer();
+  showTimer(workButton);
   modal.close();
 });
 
