@@ -15,9 +15,9 @@ const closeModalBtn = modal.querySelector(".close-modal");
 
 
 
-function showTimer(activeElem) {
+function showTimer(activeBtn) {
   timerElem.innerHTML = `${workInput.value}:00`;
-  activeElem.classList.add("active");
+  activeBtn.classList.add("active");
 }
 
 showTimer(workButton);
