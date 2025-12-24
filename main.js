@@ -27,7 +27,7 @@ function showTimer(activeBtn = workButton) {
   activeBtn.classList.add("active");
 }
 
-showTimer(workButton);
+showTimer();
 
 
 // function resetShowTimer
@@ -73,6 +73,7 @@ function updateTimer(inputElem){
 
   let interval = setInterval(() => {
     timeInSec--;
+    console.log(timeInSec)
 
     //format time
     const {mins, secs} = formatTime(timeInSec)
@@ -80,10 +81,12 @@ function updateTimer(inputElem){
     // display
     timerElem.innerHTML = `${String(mins).padStart(2, "0")}:${String(secs)}`;
 
-    if (timeInSec < 0) {
+    if (timeInSec === 0) {
       // clear interval
       clearInterval(interval);
       // show modal that timer is over
+      // reset timer for next 
+      showTimer()
     }
   }, 1000);
 
@@ -104,8 +107,6 @@ closeModalBtn.addEventListener("click", function () {
 
 // set new values in modal
 applyBtn.addEventListener("click", function () {
-  // workTime = Number(workInput.value);
-  // breakTime = Number(breakInput.value);
   resetShowTimer()
   showTimer();
   modal.close();
