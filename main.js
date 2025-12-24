@@ -32,7 +32,7 @@ loadTimer();
 
 
 
-// buttons
+// select work or break timer
 buttonsElem.querySelectorAll('button').forEach((button) => {
   button.addEventListener('click', function(e){
     // remove all previous values
@@ -76,17 +76,13 @@ function workTimer() {
 
   workInterval = setInterval(() => {
     workTimeInSec--;
+    
     //format time
     const mins = Math.floor(workTimeInSec / 60);
     const secs = workTimeInSec % 60;
 
     // display
     timerElem.innerHTML = `${String(mins).padStart(2, "0")}:${String(secs)}`;
-
-    // active work tab
-    // buttonsElem.querySelector(".work-tab").classList.add("active");
-
-    //workTimeInSec--;
 
     if (workTimeInSec < 0) {
       // clear interval
@@ -129,14 +125,7 @@ function breakTimer() {
 
       // cheak for session, if it match with default
       if (sessionCounter === session) {
-        console.log("time over, u completed 2 cycle");
         clearInterval(breakInterval);
-        clearInterval(workInterval);
-      } else {
-        //reset break tab
-        //infoElem.querySelector(".break-tab").classList.remove("active");
-        // again start work timer
-        //workTimer();
       }
     }
   }, 1000);
