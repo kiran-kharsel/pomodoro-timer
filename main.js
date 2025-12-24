@@ -30,43 +30,38 @@ function loadTimer() {
 
 loadTimer();
 
-
-
 // select work or break timer
-buttonsElem.querySelectorAll('button').forEach((button) => {
-  button.addEventListener('click', function(e){
+buttonsElem.querySelectorAll("button").forEach((button) => {
+  button.addEventListener("click", function (e) {
     // remove all previous values
     buttonsElem.querySelector(".active").classList.remove("active");
     timerElem.innerHTML = ``;
 
-    if(e.target.className === 'work-tab'){
+    if (e.target.className === "work-tab") {
       timerElem.innerHTML = `${workInput.value}:00`;
-      e.target.classList.add('active')
+      e.target.classList.add("active");
     }
-    if(e.target.className === 'break-tab'){
+    if (e.target.className === "break-tab") {
       timerElem.innerHTML = `${breakInput.value}:00`;
-      e.target.classList.add('active')
+      e.target.classList.add("active");
     }
-  })
-})
-
-
+  });
+});
 
 startBtn.addEventListener("click", function () {
   // check which tab is selected then add timer according to it
-  buttonsElem.querySelectorAll('button').forEach((button) => {
-    console.log(button.className)
-    if(button.className === 'work-tab active'){
-      console.log(button)
+  buttonsElem.querySelectorAll("button").forEach((button) => {
+    console.log(button.className);
+    if (button.className === "work-tab active") {
+      console.log(button);
       workTimer();
     }
 
-    if(button.className === 'break-tab active'){
-      console.log(button)
+    if (button.className === "break-tab active") {
+      console.log(button);
       breakTimer();
     }
-  })
-  
+  });
 });
 
 // function for worktimer
@@ -76,10 +71,11 @@ function workTimer() {
 
   workInterval = setInterval(() => {
     workTimeInSec--;
-    
+
     //format time
-    const mins = Math.floor(workTimeInSec / 60);
-    const secs = workTimeInSec % 60;
+    // const mins = Math.floor(workTimeInSec / 60);
+    // const secs = workTimeInSec % 60;
+    const {mins, secs} = formatTime(workTimeInSec)
 
     // display
     timerElem.innerHTML = `${String(mins).padStart(2, "0")}:${String(secs)}`;
@@ -105,8 +101,9 @@ function breakTimer() {
   breakInterval = setInterval(() => {
     breakTimeInSec--;
     //format time
-    const mins = Math.floor(breakTimeInSec / 60);
-    const secs = breakTimeInSec % 60;
+    // const mins = Math.floor(breakTimeInSec / 60);
+    // const secs = breakTimeInSec % 60;
+    const {mins, secs} = formatTime(breakTimeInSec)
 
     // display
     console.log(`${String(mins).padStart(2, "0")}:${String(secs)}`);
@@ -114,7 +111,6 @@ function breakTimer() {
 
     // active break tab
     // infoElem.querySelector(".break-tab").classList.add("active");
-
 
     if (breakTimeInSec < 0) {
       // clear interval
@@ -144,7 +140,15 @@ closeModalBtn.addEventListener("click", function () {
 // set new values in modal
 applyBtn.addEventListener("click", function () {
   workTime = Number(workInput.value);
-  breakTime = Number(breakInput.value)
+  breakTime = Number(breakInput.value);
   loadTimer();
   modal.close();
 });
+
+// format time function
+function formatTime(timeInSec) {
+  const mins = Math.floor(timeInSec / 60);
+  const secs = timeInSec % 60;
+
+  return {mins, secs}
+}
