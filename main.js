@@ -1,9 +1,10 @@
-// get dom elements
+// timer elem
 const timerElem = document.querySelector(".timer");
 const startBtn = document.querySelector(".action");
 const buttonsElem = document.querySelector(".buttons");
 const workButton = buttonsElem.querySelector('.work-tab')
 
+// modal elem
 const modal = document.querySelector(".setting-modal");
 const settingsBtn = document.querySelector(".settings");
 const workInput = document.querySelector("#work");
@@ -11,6 +12,11 @@ const breakInput = document.querySelector("#break");
 const sessionInput = document.querySelector("#session");
 const applyBtn = modal.querySelector(".apply");
 const closeModalBtn = modal.querySelector(".close-modal");
+
+// theme elem
+const themeBtns = modal.querySelectorAll('.color');
+
+
 
 
 
@@ -86,7 +92,7 @@ function updateTimer(inputElem){
 
       // alert that timer is over
       showTimer()
-      
+
       // reset timer for next round
       alert('time is over')
     }
@@ -94,8 +100,17 @@ function updateTimer(inputElem){
 
 }
 
+// format time function
+function formatTime(timeInSec) {
+  const mins = Math.floor(timeInSec / 60);
+  const secs = timeInSec % 60;
+
+  return {mins, secs}
+}
 
 
+
+// modal...
 
 // open setting modal
 settingsBtn.addEventListener("click", function () {
@@ -114,10 +129,10 @@ applyBtn.addEventListener("click", function () {
   modal.close();
 });
 
-// format time function
-function formatTime(timeInSec) {
-  const mins = Math.floor(timeInSec / 60);
-  const secs = timeInSec % 60;
-
-  return {mins, secs}
-}
+// apply theme 
+themeBtns.forEach((btn) => {
+  btn.addEventListener('click', function(){
+    let dataColor = btn.getAttribute('data-color');
+    document.querySelector(':root').style.setProperty('--accent-color', dataColor)
+  })
+})
