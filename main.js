@@ -73,7 +73,6 @@ function updateTimer(inputElem){
 
   let interval = setInterval(() => {
     timeInSec--;
-    console.log(timeInSec)
 
     //format time
     const {mins, secs} = formatTime(timeInSec)
@@ -84,9 +83,12 @@ function updateTimer(inputElem){
     if (timeInSec === 0) {
       // clear interval
       clearInterval(interval);
-      // show modal that timer is over
-      // reset timer for next 
+
+      // alert that timer is over
       showTimer()
+      
+      // reset timer for next round
+      alert('time is over')
     }
   }, 1000);
 
