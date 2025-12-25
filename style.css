@@ -210,6 +210,32 @@ body{
     padding-left: 5px;
 }
 
+.setting-modal .themes{
+    margin-top: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 10px;
+}
+
+.themes h5{
+    text-transform: uppercase;
+}
+
+.themes .colors{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.colors .color{
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+    background-color: black;
+    cursor: pointer;
+}
+
 .setting-modal button{
     z-index: 5;
     position: absolute;
