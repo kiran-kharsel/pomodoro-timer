@@ -10,7 +10,6 @@
     --accent-color: #f96d00;
     --text-light: #f2f2f2;
     --text-dark: #222831;
-
 }
 
 body{
@@ -26,7 +25,6 @@ body{
 .container{
     width: 500px;
     height: 70vh;
-    /* background-color: green; */
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -257,4 +255,42 @@ body{
 .setting-modal button:hover{
     background-color: var(--text-light);
     color: var(--accent-color);
+}
+
+
+/* media queries */
+
+@media only screen and (max-width: 600px) {
+    .setting-modal{
+        height: 60vh;
+        padding: 0px 15px;
+    }
+
+    .setting-modal .times{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .times .time-inputs{
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .time-inputs div{
+        width: 80%;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .themes{
+        flex-direction: column;
+        gap: 20px;
+    }
+
+
+    .setting-modal .apply{
+        top: 97%;
+    }
 }
