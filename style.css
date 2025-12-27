@@ -230,7 +230,6 @@ body{
     height: 30px;
     width: 30px;
     border-radius: 50%;
-    /* border: 2px solid black; */
     cursor: pointer;
 }
 
@@ -261,6 +260,31 @@ body{
 /* media queries */
 
 @media only screen and (max-width: 600px) {
+    /* body{
+        height: 100%;
+        width: 100%;
+        align-items: center;
+    } */
+
+    .container{
+        width: 80%;
+        height: 80%;
+    }
+
+    .buttons{
+        width: 80%;
+    }
+
+    .container .timer-container{
+        width: 250px;
+        height: 250px;
+        gap: 20px;
+    }
+
+    .timer-container h1{
+        font-size: 70px;
+    }
+
     .setting-modal{
         height: 60vh;
         padding: 0px 15px;
