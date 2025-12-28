@@ -14,3 +14,10 @@ This project helps you stay productive by breaking work into focused intervals, 
 
 ---
 
+![alt text](assets/pomodoro-01.png)
+
+![alt text](assets/pomodoro-02.png)
+
+![alt text](assets/pomodoro-mobile-01.png)
+
+![alt text](assets/pomodoro-mobile-02.png)
